@@ -11,7 +11,7 @@ Responsive images are shim'd using [legacypicturefill](https://github.com/area17
 
 ## How I'm using this
 
-In the head of my documents I'm inlining small piece of JavaScript:
+In the `<head>` of my documents I'm inlining small piece of JavaScript:
 
 ```javascript
 (function(d) {
@@ -80,7 +80,3 @@ I've tested this in a variety of browsers:
 ## Author
 
 * [Mike Byrne](https://github.com/13twelve) - [@13twelve](https://twitter.com/13twelve)
-
-## Inspirations
-
-* [universal-ie6-css](https://github.com/malarkey/universal-ie6-css)
