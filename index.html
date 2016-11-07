@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+  <html dir="ltr" lang="en-US" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>HTML4CSS</title>
+  <link rel="stylesheet" href="html4.css">
+  <style>
+    iframe {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 53px;
+      bottom: 0;
+      width: 100%;
+      height: calc(100vh - 53px);
+    }
+    #demohead {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      background: #1a1a1a;
+      color: #fff;
+      margin: 0;
+      padding: 10px 20px;
+      overflow: hidden;
+    }
+    #demohead a {
+      margin: 0;
+      float: left;
+      line-height: 33px;
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+    }
+    #demohead a:hover {
+      color: #ffc;
+    }
+    #demohead form {
+      position: relative;
+      background: transparent;
+      border: transparent;
+      padding: 0;
+      margin: 0;
+      float: right;
+      width: calc(100% - 200px);
+    }
+    #demohead input {
+      margin: 0;
+      float: left;
+      width: calc(100% - 70px);
+      background: #fff !important;
+      border: 0 none;
+      height: 33px;
+      padding: 0 8px;
+      transition: opacity .1s;
+    }
+    #demohead button {
+      margin: 0;
+      padding: 0 8px;
+      float: right;
+      border: 0 none;
+      height: 33px;
+      transition: opacity .1s;
+    }
+    #demohead input[disabled] {
+      opacity: .5;
+    }
+    #demohead form.loading::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 40px;
+      height: 30px;
+      background-color: #ccc;
+    }
+    #demohead form.loading::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      right: 10px;
+      width: 18px;
+      height: 18px;
+      border: 3px solid transparent;
+      border-top-color: #000;
+      border-radius: 50%;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation: spin 1.1s infinite linear;
+      animation: spin 1.1s infinite linear;
+    }
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="demohead">
+    <a href="https://github.com/area17/html4css" title="HTML4CSS on GitHub">HTML4CSS</a>
+    <form id="form">
+      <input id="url" type="text" placeholder="URL e.g. www.charlierose.com">
+      <button>Go!</button>
+    </form>
+  </div>
+  <iframe id="iframe" src="/test.php?url=demo.html" height="320px" width="240px" frameborder="0" scrolling="yes"></iframe>
+  <script>
+  function encodeUrl(str) {
+    return encodeURIComponent(((str.indexOf('://') == -1) ? 'http://' + str : str)).replace(/[!'()*]/g, function(c) {
+      return '%' + c.charCodeAt(0).toString(16);
+    });
+  }
+  function disable() {
+    var fields = document.getElementById("form").getElementsByTagName('*');
+    for(var i = 0; i < fields.length; i++) {
+        fields[i].disabled = true;
+    }
+    document.getElementById('form').classList.add('loading');
+  }
+  function enable() {
+    var fields = document.getElementById("form").getElementsByTagName('*');
+    for(var i = 0; i < fields.length; i++) {
+        fields[i].disabled = false;
+    }
+    document.getElementById('form').classList.remove('loading');
+  }
+  document.getElementById('form').addEventListener('submit',function(event){
+    event.preventDefault();
+    if (document.getElementById('url').value.length > 0) {
+      document.getElementById('iframe').src = '/test.php?url='+encodeUrl(document.getElementById('url').value);
+      disable();
+    }
+  });
+  document.getElementById('iframe').addEventListener('load',function(){
+    enable();
+  });
+  </script>
+</body>
+</html>
