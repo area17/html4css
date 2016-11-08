@@ -10,7 +10,14 @@ $url = urldecode($url);
 $dom = new DOMDocument;
 $html = new DOMDocument;
 // stick the html from our site into one
-$dom->loadHTML(file_get_contents($url));
+$http_opts = array(
+  'http'=>array(
+    'method'=>"GET",
+    'header'=>"User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+  )
+);
+$http_context = stream_context_create($http_opts);
+$dom->loadHTML(file_get_contents($url, false, $http_context));
 // grab the body
 $body = $dom->getElementsByTagName('body')->item(0);
 // add the body to the new html
