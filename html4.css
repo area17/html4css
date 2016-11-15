@@ -56,7 +56,7 @@ body {
   margin: 0 auto;
   padding: 0 20px;
   max-width: 1200px;
-  _width:expression(this.scrollWidth > 1200 ? "1200px" : "auto");
+  _width:expression(this.scrollWidth > 1200 ? "1200px": "auto");
 }
 
 /* Layout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -100,12 +100,14 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, label, small {
 }
 
 h1 {
+  margin-top: 60px;
   font-size: 43px;
   line-height: 50px;
   letter-spacing: -1px;
 }
 
 h2 {
+  margin-top: 40px;
   font-size: 29px;
   line-height: 42px;
 }
@@ -118,7 +120,9 @@ h3 {
 
 h4,
 h5,
-h6 {}
+h6 {
+  font-weight: bold;
+}
 
 b,
 strong,
@@ -188,11 +192,11 @@ ol ol {
 }
 
 ul {
-  list-style-type : disc;
+  list-style-type: disc;
 }
 
 ol {
-  list-style-type : decimal;
+  list-style-type: decimal;
 }
 
 dt {
@@ -206,16 +210,17 @@ dd {
 /* Tables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 table {
-  border-collapse : separate;
-  border-spacing : 0;
-  width : 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-top: 20px;
 }
 
 table,
 td,
 th {
-  vertical-align : top;
-  border: 1px solid #f2f2f2;
+  vertical-align: top;
+  border: 1px solid #e6e6e6;
 }
 
 td,
@@ -230,6 +235,11 @@ th {
   font-weight: bold;
 }
 
+thead,
+tfoot {
+  background-color: #f7f7f7;
+}
+
 caption {
   font-style: italic;
 }
@@ -238,14 +248,14 @@ caption {
 
 form {
   background-color: #fff;
-  border: 1px solid #f2f2f2;
+  border: 1px solid #e6e6e6;
   padding: 10px 20px 30px;
   margin-top: 20px;
 }
 
 fieldset {
   min-width: -webkit-min-content;
-  border: 1px solid #f2f2f2;
+  border: 1px solid #e6e6e6;
   padding: 10px 20px 30px;
   margin-top: 20px;
 }
@@ -266,6 +276,8 @@ textarea {
   display: block;
   margin-top: 5px;
   font: 18px/27px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
 }
 
 .btn,
@@ -306,8 +318,8 @@ blockquote {
 
 abbr,
 acronym {
-  border-bottom : 1px dotted #111;
-  cursor : help;
+  border-bottom: 1px dotted #111;
+  cursor: help;
 }
 
 s,
@@ -324,13 +336,15 @@ ins, mark {
 
 pre,
 code {
-  font : 15px/20px 'lucida console', monospace;
+  font: 15px/20px 'lucida console', monospace;
   background-color: #f2f2f2;
   padding: 5px 8px;
 }
 
 pre {
+  display: block;
   white-space: pre;
+  margin-top: 20px;
 }
 
 figcaption {
@@ -353,3 +367,47 @@ sub {
   vertical-align: top;
   font-size: 10px;
 }
+
+/* Smaller screens ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@media (max-width: 600px) {
+
+  body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, label, small {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  h1 {
+    font-size: 29px;
+    line-height: 42px;
+    letter-spacing: 0;
+  }
+
+  h2,
+  h3 {
+    font-size: 23px;
+    line-height: 36px;
+  }
+
+  input,
+  textarea,
+  .btn,
+  input[type=submit],
+  button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  pre,
+  code {
+    line-height: 18px;
+  }
+
+  figcaption {
+    font-size: 13px;
+    line-height: 15px;
+  }
+}
+
+
+
