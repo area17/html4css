@@ -301,6 +301,18 @@ form ol {
 
 /* Less common ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+object,
+embed,
+iframe {
+  display: block;
+  border: 0 none;
+  margin-top: 20px;
+  max-width: 500px;
+  height: auto;
+  height: expression(this.width > 500 ? ((500 * this.height) / this.width): true);
+  width: expression(this.width > 500 ? 500: true);
+}
+
 hr {
   border: 0;
   height: 1px;
@@ -343,7 +355,8 @@ code {
 
 pre {
   display: block;
-  white-space: pre;
+  word-wrap: break-word;
+  white-space: pre-wrap;
   margin-top: 20px;
 }
 
