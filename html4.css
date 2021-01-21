@@ -151,9 +151,10 @@ a:focus {
   color: #000;
 }
 
-/* Image/Figure/SVG ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* Image/Video/Figure/SVG ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 img,
+video,
 figure,
 picture {
   display: block;
@@ -161,14 +162,16 @@ picture {
   margin-top: 20px;
 }
 
-img {
+img,
+video {
   max-width: 500px;
   height: auto;
   height: expression(this.width > 500 ? ((500 * this.height) / this.width): true);
   width: expression(this.width > 500 ? 500: true);
 }
 
-li img {
+li img,
+li video {
   margin-top: 0;
 }
 
